@@ -3,7 +3,7 @@ name: Publicar en GitHub Pages
 on:
   push:
     branches: ["claude/impulso-digital-website-ggfrl1"]
-    paths: ["site/**", ".github/workflows/pages.yml"]
+    paths: ["site/**", "index.html", ".github/workflows/pages.yml"]
   workflow_dispatch:
 
 permissions:
