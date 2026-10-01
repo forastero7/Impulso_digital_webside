@@ -40,7 +40,15 @@ Regla: si un dato es `null` o `false`, **no se muestra** en la web.
 | `show.paymentTerms` | Pendiente | Condición 50% / 50% oculta |
 | `analytics` | No instalada | Ningún script de seguimiento |
 
-## Publicación en Netlify
+## Publicación en GitHub Pages (actual)
+
+Cada push a la rama `claude/impulso-digital-website-ggfrl1` que modifique `site/` publica la web
+automáticamente con `.github/workflows/pages.yml` (también se puede lanzar a mano desde *Actions*).
+Requisito: en *Settings → Pages → Build and deployment → Source* debe estar seleccionado **GitHub Actions**.
+
+Dirección: https://forastero7.github.io/Impulso_digital_webside/
+
+## Publicación en Netlify (alternativa)
 
 1. En Netlify: *Add new site → Import an existing project → GitHub* y elegir este repositorio.
 2. Netlify lee `netlify.toml` y publica la carpeta `site/` (no hay comando de build).
@@ -49,7 +57,7 @@ Regla: si un dato es `null` o `false`, **no se muestra** en la web.
 
 - [ ] Completar `site/js/config.js` con los datos confirmados.
 - [ ] Quitar `<meta name="robots" content="noindex, nofollow">` de `site/index.html`.
-- [ ] Quitar la cabecera `X-Robots-Tag` de `netlify.toml`.
+- [ ] Quitar la cabecera `X-Robots-Tag` de `netlify.toml` (si se usa Netlify).
 - [ ] Quitar el aviso "Versión de revisión" (`.review-banner`) de `site/index.html`.
 - [ ] Al conectar el dominio propio: añadir `og:url`, `og:image`, `canonical`, `sitemap.xml` y datos estructurados.
 
