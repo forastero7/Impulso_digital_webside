@@ -5,7 +5,7 @@ de navegación. No hay enlaces ni iframes hacia las webs de los clientes.
 
 | Proyecto | Video (MP4) | Poster opcional (WebP) |
 |---|---|---|
-| Industrias Céspedes | `site/assets/videos/industrias-cespedes.mp4` | `site/img/portfolio/industrias-cespedes-poster.webp` |
+| Industrias Céspedes ✅ activo | `site/assets/videos/industrias-cespedes.mp4` (1.66 MB) | `site/img/portfolio/industrias-cespedes-poster.webp` (12 KB) |
 | Jeinox GastroSystems ✅ activo | `site/assets/videos/jeinox-gastrosystems.mp4` (0.79 MB) | `site/img/portfolio/jeinox-gastrosystems-poster.webp` (32 KB) |
 
 ## Cómo activarlos

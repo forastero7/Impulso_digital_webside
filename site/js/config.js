@@ -51,7 +51,7 @@ window.SITE_CONFIG = {
   //   video  -> site/assets/videos/<proyecto>.mp4
   //   poster -> site/img/portfolio/<proyecto>-poster.webp
   portfolioMedia: {
-    "industrias-cespedes": { video: false, poster: false },
+    "industrias-cespedes": { video: true, poster: true },
     "jeinox-gastrosystems": { video: true, poster: true }
   },
 
