@@ -42,28 +42,35 @@ Regla: si un dato es `null` o `false`, **no se muestra** en la web.
 
 ## Publicación en GitHub Pages (actual)
 
-Cada push a la rama `claude/impulso-digital-website-ggfrl1` que modifique `site/` publica la web
-automáticamente con `.github/workflows/pages.yml` (también se puede lanzar a mano desde *Actions*).
-Requisito: en *Settings → Pages → Build and deployment → Source* debe estar seleccionado **GitHub Actions**.
+GitHub Pages publica **desde la rama** (*Settings → Pages → Deploy from a branch*, raíz del repo).
+La raíz (`index.html`) redirige a `site/`, por lo que la dirección pública es:
 
-Dirección: https://forastero7.github.io/Impulso_digital_webside/
+**https://forastero7.github.io/Impulso_digital_webside/site/**
 
-## Publicación en Netlify (alternativa)
+El flujo `.github/workflows/pages.yml` queda solo para ejecución manual (antes competía con
+la publicación desde la rama en cada push).
 
-1. En Netlify: *Add new site → Import an existing project → GitHub* y elegir este repositorio.
-2. Netlify lee `netlify.toml` y publica la carpeta `site/` (no hay comando de build).
+## Lanzamiento (permitir indexación)
 
-### Antes de publicar la versión final
-
-- [ ] Completar `site/js/config.js` con los datos confirmados.
 - [ ] Quitar `<meta name="robots" content="noindex, nofollow">` de `site/index.html`.
-- [ ] Quitar la cabecera `X-Robots-Tag` de `netlify.toml` (si se usa Netlify).
-- [ ] Quitar el aviso "Versión de revisión" (`.review-banner`) de `site/index.html`.
-- [ ] Al conectar el dominio propio: añadir `og:url`, `og:image`, `canonical`, `sitemap.xml` y datos estructurados.
+- [ ] Quitar el aviso "Versión de revisión" (`<div class="review-banner">`) de `site/index.html`.
+- [ ] (Si se usa Netlify) quitar la cabecera `X-Robots-Tag` de `netlify.toml`.
+
+## Al conectar el dominio propio
+
+Reemplazar `https://forastero7.github.io/Impulso_digital_webside/site/` por la URL final en:
+
+1. `site/index.html`: `canonical`, `og:url`, `og:image`, `twitter:image` y el JSON-LD (`url`, `logo`, `image`).
+2. `sitemap.xml` (`<loc>`) y `robots.txt` (línea `Sitemap:`).
+3. `index.html` de la raíz (`canonical`).
+
+Recomendado al conectar el dominio: en *Settings → Pages → Source* elegir **GitHub Actions**,
+volver a añadir el disparador `push` en `.github/workflows/pages.yml` y mover `robots.txt` y
+`sitemap.xml` a `site/`. Así la web queda en la raíz del dominio (sin `/site/`). Después:
+Search Console (verificar dominio, enviar sitemap, inspeccionar URL) y Analytics si se usa.
 
 ## Analítica
 
-No se ha instalado Google Analytics ni Meta Pixel. Cuando se defina qué medir, se
-incorporarán en `site/js/main.js` (sección "Analítica") usando los IDs de
-`config.js`, junto con el aviso de cookies que corresponda a las tecnologías usadas.
-La web actual no usa cookies ni servicios de terceros: fuentes e iconos están alojados en el propio sitio.
+No hay Google Analytics, Meta Pixel ni cookies. Los IDs se configurarán en `analytics`
+de `site/js/config.js` y la carga se añadirá en `site/js/main.js` (sección "Analítica"),
+junto con el aviso de consentimiento que corresponda a las herramientas usadas.

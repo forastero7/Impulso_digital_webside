@@ -18,7 +18,7 @@
     if (waNumber) {
       el.href = waLink(el.getAttribute("data-plan"), el.getAttribute("data-msg"));
       el.target = "_blank";
-      el.rel = "noopener";
+      el.rel = "noopener noreferrer";
       el.hidden = false;
     } else if (el.hasAttribute("data-float")) {
       el.hidden = true;
@@ -66,7 +66,7 @@
       var url = social[key];
       if (!url || !/^https?:\/\//.test(url)) return;
       var li = document.createElement("li");
-      li.innerHTML = '<a target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor"></path></svg></a>';
+      li.innerHTML = '<a target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor"></path></svg></a>';
       var a = li.firstChild;
       a.href = url;
       a.setAttribute("aria-label", names[key]);
@@ -93,28 +93,66 @@
 
   /* ---------- Portafolio: videos de navegación ----------
    * Cada caso solo solicita su video o poster si config.js indica que el archivo existe.
-   * El video se carga y reproduce (sin sonido) solo mientras está en pantalla.
-   * Con "reducir movimiento" no hay reproducción automática: se muestran controles.
+   * Posters: se cargan al acercarse a la sección (no en la carga inicial).
+   * Video: se carga y reproduce (sin sonido) solo mientras está en pantalla, con un
+   * botón para pausarlo (WCAG 2.2.2). Con "reducir movimiento" no hay reproducción
+   * automática: se muestran los controles nativos.
    */
   var media = cfg.portfolioMedia || {};
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var autoVideos = [];
+  var hasIO = "IntersectionObserver" in window;
+  var cases = [], autoVideos = [];
+
+  function loadPoster(item) {
+    if (item._posterDone || !item._opts.poster) return;
+    item._posterDone = true;
+    var url = item._video.getAttribute("data-poster");
+    item._fallback.style.backgroundImage = "url(\"" + url + "\")";
+    item._fallback.classList.add("has-poster");
+    if (item._opts.video) item._video.poster = url;
+  }
+
+  function playVideo(video) {
+    if (!video.src) video.src = video.getAttribute("data-src");
+    var p = video.play();
+    // Si el navegador bloquea la reproducción automática, se ofrecen los controles nativos.
+    if (p && p.catch) p.catch(function () { video.controls = true; if (video._toggle) video._toggle.hidden = true; });
+  }
+
+  function addToggle(item, video) {
+    var name = (item.querySelector("h3") || {}).textContent || "";
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "case-toggle";
+    btn.hidden = true;
+    function sync() {
+      var paused = video.paused;
+      btn.classList.toggle("is-paused", paused);
+      btn.setAttribute("aria-label", (paused ? "Reproducir" : "Pausar") + " video de " + name);
+    }
+    btn.addEventListener("click", function () {
+      if (video.paused) { video._userPaused = false; playVideo(video); }
+      else { video._userPaused = true; video.pause(); }
+    });
+    video.addEventListener("play", sync);
+    video.addEventListener("pause", sync);
+    video.addEventListener("loadeddata", function () { if (!video.controls) btn.hidden = false; sync(); });
+    video._toggle = btn;
+    item.querySelector(".case-screen").appendChild(btn);
+  }
 
   $$("[data-case]").forEach(function (item) {
-    var opts = media[item.getAttribute("data-case")] || {};
     var video = item.querySelector(".case-video");
-    var fallback = item.querySelector(".case-fallback");
     if (!video) return;
+    item._opts = media[item.getAttribute("data-case")] || {};
+    item._video = video;
+    item._fallback = item.querySelector(".case-fallback");
+    cases.push(item);
+    if (!item._opts.video) return;
 
-    if (opts.poster) {
-      fallback.style.backgroundImage = "url(\"" + video.getAttribute("data-poster") + "\")";
-      fallback.classList.add("has-poster");
-    }
-    if (!opts.video) return;
-
+    var fallback = item._fallback;
     video.muted = true;
-    if (opts.poster) video.poster = video.getAttribute("data-poster");
-    video.addEventListener("error", function () { video.hidden = true; }, true);
+    video.addEventListener("error", function () { video.hidden = true; if (video._toggle) video._toggle.hidden = true; }, true);
     video.addEventListener("loadeddata", function () { fallback.hidden = true; });
     video.hidden = false;
 
@@ -124,29 +162,30 @@
       video.preload = "none";
       video.src = video.getAttribute("data-src");
     } else {
+      addToggle(item, video);
       autoVideos.push(video);
     }
   });
 
-  function playVideo(video) {
-    if (!video.src) video.src = video.getAttribute("data-src");
-    var p = video.play();
-    // Si el navegador bloquea la reproducción automática, se ofrecen controles.
-    if (p && p.catch) p.catch(function () { video.controls = true; });
-  }
+  if (hasIO) {
+    var pio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { loadPoster(entry.target); pio.unobserve(entry.target); }
+      });
+    }, { rootMargin: "400px 0px" });
+    cases.forEach(function (c) { pio.observe(c); });
 
-  if (autoVideos.length) {
-    if ("IntersectionObserver" in window) {
-      var vio = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) playVideo(entry.target);
-          else if (!entry.target.paused) entry.target.pause();
-        });
-      }, { threshold: 0.35 });
-      autoVideos.forEach(function (v) { vio.observe(v); });
-    } else {
-      autoVideos.forEach(playVideo);
-    }
+    var vio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var v = entry.target;
+        if (entry.isIntersecting) { if (!v._userPaused) playVideo(v); }
+        else if (!v.paused) v.pause();
+      });
+    }, { threshold: 0.35 });
+    autoVideos.forEach(function (v) { vio.observe(v); });
+  } else {
+    cases.forEach(loadPoster);
+    autoVideos.forEach(playVideo);
   }
 
   /* ---------- Menú móvil ---------- */

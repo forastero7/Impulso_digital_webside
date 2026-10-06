@@ -1,0 +1,9 @@
+# Rediseñalo Pe
+# Permite el rastreo de todo el sitio público (HTML, CSS, JS, imágenes y videos).
+# Nota: en GitHub Pages de proyecto este archivo no está en la raíz del host
+# (forastero7.github.io/robots.txt), por lo que los buscadores solo lo leerán cuando
+# se conecte un dominio propio. Al hacerlo, actualizar la URL del sitemap.
+User-agent: *
+Allow: /
+
+Sitemap: https://forastero7.github.io/Impulso_digital_webside/sitemap.xml

@@ -233,7 +233,7 @@ body.menu-open { overflow: hidden; }
 .m-line.short { width: 60%; }
 .m-wa {
   margin-top: 8px; display: flex; align-items: center; justify-content: center; gap: 4px;
-  font-size: 9px; font-weight: 700; color: #fff; background: var(--wa); border-radius: 999px; padding: 5px 0;
+  font-size: 9px; font-weight: 700; color: #fff; background: #0E7A55; /* verde WhatsApp oscurecido: contraste 5.3:1 */ border-radius: 999px; padding: 5px 0;
 }
 .m-wa svg { width: 10px; height: 10px; }
 .bubble {
@@ -397,6 +397,19 @@ body.menu-open { overflow: hidden; }
 .case-fallback.has-poster > * { display: none; }
 .case-fallback-name { font-family: var(--font-head); font-weight: 800; font-size: clamp(1.2rem, 4vw, 1.7rem); color: #fff; }
 .case-fallback-note { font-size: .85rem; color: #9FB3CC; }
+/* Botón de pausa/reproducción del video (WCAG 2.2.2) */
+.case-toggle {
+  position: absolute; right: 12px; bottom: 12px; z-index: 2; width: 40px; height: 40px; border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .35); background: rgba(5, 11, 20, .72); cursor: pointer;
+  display: grid; place-items: center; transition: background .2s;
+}
+.case-toggle:hover { background: rgba(5, 11, 20, .9); }
+.case-toggle::before, .case-toggle::after { content: ""; display: block; }
+/* Pausa: dos barras */
+.case-toggle::before { width: 12px; height: 14px; border-left: 4px solid #fff; border-right: 4px solid #fff; box-sizing: border-box; }
+.case-toggle::after { display: none; }
+/* Reproducir: triángulo */
+.case-toggle.is-paused::before { width: 0; height: 0; border: 0; border-left: 13px solid #fff; border-top: 8px solid transparent; border-bottom: 8px solid transparent; margin-left: 3px; }
 
 .case-body { padding: 0 8px 8px; }
 .case-body h3 { font-size: 1.35rem; font-weight: 800; }

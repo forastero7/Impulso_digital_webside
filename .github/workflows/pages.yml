@@ -1,9 +1,10 @@
 name: Publicar en GitHub Pages
 
+# Solo manual: hoy GitHub Pages publica desde la rama ("Deploy from a branch").
+# Ejecutarlo en cada push competía con esa publicación y el resultado dependía de cuál
+# terminaba último. Si se cambia Settings → Pages → Source a "GitHub Actions", volver a
+# añadir el disparador "push" y actualizar canonical/sitemap (la web quedaría en la raíz).
 on:
-  push:
-    branches: ["claude/impulso-digital-website-ggfrl1"]
-    paths: ["site/**", "index.html", ".github/workflows/pages.yml"]
   workflow_dispatch:
 
 permissions:
