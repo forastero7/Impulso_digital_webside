@@ -14,11 +14,12 @@ window.SITE_CONFIG = {
     // Número en formato internacional, solo dígitos (ej. "51999999999").
     // Confirmado. null = botones de WhatsApp desactivados.
     number: "51929523437",
+    // Mensaje general (botón Consultar, Consultar por WhatsApp y botón flotante).
     defaultMessage:
-      "Hola, Rediseñalo Pe. Quisiera información para mejorar la presencia digital de mi negocio.",
+      "Hola Rediseñalo Pe, quisiera recibir información sobre sus servicios.",
     // Botón "Solicitar diagnóstico gratuito" (data-msg="diagnostic").
     diagnosticMessage:
-      "Hola, Rediseñalo Pe. Quisiera solicitar un diagnóstico gratuito de la presencia digital de mi negocio.",
+      "Hola Rediseñalo Pe, quisiera solicitar un diagnóstico inicial para mi negocio. Me gustaría conocer qué podría mejorar de mi presencia digital.",
     // {plan} se reemplaza por data-plan del botón (ej. "Negocio desde S/1,000").
     planMessage:
       "Hola Rediseñalo Pe, estoy interesado(a) en el Plan {plan}. Quisiera recibir más información."
