@@ -52,7 +52,7 @@ window.SITE_CONFIG = {
   //   poster -> site/img/portfolio/<proyecto>-poster.webp
   portfolioMedia: {
     "industrias-cespedes": { video: false, poster: false },
-    "jeinox-gastrosystems": { video: false, poster: false }
+    "jeinox-gastrosystems": { video: true, poster: true }
   },
 
   // Contenido en borrador: true = se muestra en la web.
