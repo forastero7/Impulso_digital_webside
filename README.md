@@ -15,7 +15,8 @@ site/                 ← carpeta que se publica en Netlify
 ├── js/config.js      ← DATOS PENDIENTES: WhatsApp, horario, redes, etc.
 ├── js/main.js        ← comportamiento (menú, WhatsApp, animaciones)
 ├── fonts/            ← Manrope e Inter alojadas localmente (sin servicios externos)
-└── img/              ← logo optimizado (WebP), favicon y, más adelante, capturas
+├── img/              ← logo optimizado (WebP), favicon y posters del portafolio (img/portfolio/)
+└── assets/videos/     ← videos de navegación del portafolio (MP4)
 docs/                 ← notas internas (no se publican)
 netlify.toml          ← configuración de Netlify
 ```
@@ -33,7 +34,7 @@ Regla: si un dato es `null` o `false`, **no se muestra** en la web.
 | `schedule` | Pendiente de confirmar | No se muestra horario |
 | `email`, `social` | Pendientes | No se muestran correo ni iconos de redes |
 | `legal.ruc`, `legal.businessName` | Pendientes | No se muestran |
-| `portfolio` | Pendiente de autorización | Solo se ven proyectos demostrativos (ver `docs/portafolio-pendiente.md`) |
+| `portfolioMedia` | Videos pendientes | Fondo de respaldo en Proyectos realizados (ver `docs/portafolio-videos.md`) |
 | `show.processTimes` | Pendiente | Plazos del proceso ocultos |
 | `show.planTraining` | Pendiente | Capacitación presencial oculta en los planes |
 | `show.paymentTerms` | Pendiente | Condición 50% / 50% oculta |

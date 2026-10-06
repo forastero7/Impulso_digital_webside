@@ -91,29 +91,63 @@
     el.hidden = !show[el.getAttribute("data-show")];
   });
 
-  /* ---------- Portafolio: proyectos reales autorizados ---------- */
-  var grid = document.querySelector("[data-portfolio]");
-  (cfg.portfolio || []).slice().reverse().forEach(function (p) {
-    if (!grid || !p || !p.name) return;
-    var card = document.createElement("article");
-    card.className = "card project";
-    var shot = p.image
-      ? '<img class="project-img" loading="lazy" width="1200" height="750">'
-      : '<div class="project-shot" aria-hidden="true"></div>';
-    card.innerHTML = shot +
-      '<div class="project-body"><span class="tag tag-real">Proyecto real</span><h3></h3><p></p>' +
-      (p.url ? '<a class="link-arrow" target="_blank" rel="noopener">Ver proyecto <span aria-hidden="true">→</span></a>' : "") +
-      "</div>";
-    if (p.image) {
-      var img = card.querySelector("img");
-      img.src = p.image;
-      img.alt = p.imageAlt || "Captura de " + p.name;
+  /* ---------- Portafolio: videos de navegación ----------
+   * Cada caso solo solicita su video o poster si config.js indica que el archivo existe.
+   * El video se carga y reproduce (sin sonido) solo mientras está en pantalla.
+   * Con "reducir movimiento" no hay reproducción automática: se muestran controles.
+   */
+  var media = cfg.portfolioMedia || {};
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var autoVideos = [];
+
+  $$("[data-case]").forEach(function (item) {
+    var opts = media[item.getAttribute("data-case")] || {};
+    var video = item.querySelector(".case-video");
+    var fallback = item.querySelector(".case-fallback");
+    if (!video) return;
+
+    if (opts.poster) {
+      fallback.style.backgroundImage = "url(\"" + video.getAttribute("data-poster") + "\")";
+      fallback.classList.add("has-poster");
     }
-    card.querySelector("h3").textContent = p.name + (p.type ? " · " + p.type : "");
-    card.querySelector("p").textContent = p.description || "";
-    if (p.url) card.querySelector("a").href = p.url;
-    grid.insertBefore(card, grid.firstChild);
+    if (!opts.video) return;
+
+    video.muted = true;
+    if (opts.poster) video.poster = video.getAttribute("data-poster");
+    video.addEventListener("error", function () { video.hidden = true; }, true);
+    video.addEventListener("loadeddata", function () { fallback.hidden = true; });
+    video.hidden = false;
+
+    if (reduceMotion) {
+      // Sin descarga hasta que la persona pulse reproducir.
+      video.controls = true;
+      video.preload = "none";
+      video.src = video.getAttribute("data-src");
+    } else {
+      autoVideos.push(video);
+    }
   });
+
+  function playVideo(video) {
+    if (!video.src) video.src = video.getAttribute("data-src");
+    var p = video.play();
+    // Si el navegador bloquea la reproducción automática, se ofrecen controles.
+    if (p && p.catch) p.catch(function () { video.controls = true; });
+  }
+
+  if (autoVideos.length) {
+    if ("IntersectionObserver" in window) {
+      var vio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) playVideo(entry.target);
+          else if (!entry.target.paused) entry.target.pause();
+        });
+      }, { threshold: 0.35 });
+      autoVideos.forEach(function (v) { vio.observe(v); });
+    } else {
+      autoVideos.forEach(playVideo);
+    }
+  }
 
   /* ---------- Menú móvil ---------- */
   var toggle = document.querySelector(".nav-toggle");

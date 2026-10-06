@@ -45,10 +45,15 @@ window.SITE_CONFIG = {
     businessName: null
   },
 
-  // Proyectos reales del portafolio. Solo agregar cuando el cliente haya autorizado
-  // publicar su nombre, logo y capturas. Ver docs/portafolio-pendiente.md
-  // Formato: { name, type, description, url, image, imageAlt }
-  portfolio: [],
+  // Videos del portafolio (Proyectos realizados). Cambiar a true SOLO cuando el
+  // archivo exista en la carpeta indicada; con false se muestra el fondo de respaldo
+  // y no se solicita ningún archivo (sin referencias rotas).
+  //   video  -> site/assets/videos/<proyecto>.mp4
+  //   poster -> site/img/portfolio/<proyecto>-poster.webp
+  portfolioMedia: {
+    "industrias-cespedes": { video: false, poster: false },
+    "jeinox-gastrosystems": { video: false, poster: false }
+  },
 
   // Contenido en borrador: true = se muestra en la web.
   show: {

@@ -372,47 +372,51 @@ body.menu-open { overflow: hidden; }
 .includes-grid li { font-size: .95rem; line-height: 1.4; }
 @media (min-width: 900px) { .includes-grid { grid-template-columns: repeat(3, 1fr); column-gap: 32px; } }
 
-/* ---------- Portafolio ---------- */
-.portfolio-grid { display: grid; gap: 22px; }
-@media (min-width: 720px) { .portfolio-grid { grid-template-columns: 1fr 1fr; } }
-@media (min-width: 1040px) { .portfolio-grid { grid-template-columns: repeat(3, 1fr); } }
-.project { overflow: hidden; display: flex; flex-direction: column; }
-.project:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-.project-body { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 10px; }
-.project-body h3 { font-size: 1.15rem; }
-.project-body p { color: var(--text-2); font-size: .96rem; }
-.project-img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border-bottom: 1px solid var(--border); }
-.link-arrow { font-weight: 600; text-decoration: none; margin-top: 4px; }
-.link-arrow:hover { text-decoration: underline; }
-.tag { align-self: flex-start; font-size: .75rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; }
-.tag-demo { background: #FEF3C7; color: #92400E; }
-.tag-real { background: var(--cyan-soft); color: var(--cyan-text); }
+/* ---------- Portafolio: proyectos realizados ---------- */
+.cases { display: grid; gap: 28px; }
+.case {
+  display: grid; gap: 22px; padding: 14px; border-radius: 20px;
+  background: #fff; border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+}
+/* Marco de navegador minimalista: el protagonista es el video */
+.case-media { border-radius: 14px; overflow: hidden; border: 1px solid var(--border); background: var(--navy); }
+.case-bar { display: flex; gap: 6px; padding: 9px 12px; background: #EEF2F7; border-bottom: 1px solid var(--border); }
+.case-bar i { width: 9px; height: 9px; border-radius: 50%; background: #CBD5E1; }
+.case-screen { position: relative; aspect-ratio: 16 / 9; background: var(--ink); }
+.case-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: transparent; }
+.case-fallback {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 6px; padding: 16px; text-align: center;
+  background:
+    radial-gradient(420px 220px at 85% 0%, rgba(0, 200, 252, .22), transparent 70%),
+    radial-gradient(420px 260px at 0% 100%, rgba(0, 107, 253, .3), transparent 70%),
+    var(--ink);
+  background-size: cover; background-position: center top;
+}
+.case-fallback.has-poster { background-size: cover; }
+.case-fallback.has-poster > * { display: none; }
+.case-fallback-name { font-family: var(--font-head); font-weight: 800; font-size: clamp(1.2rem, 4vw, 1.7rem); color: #fff; }
+.case-fallback-note { font-size: .85rem; color: #9FB3CC; }
 
-/* Maquetas de navegador */
-.project-shot { aspect-ratio: 16 / 10; padding: 18px 18px 0; display: flex; flex-direction: column; background: linear-gradient(135deg, #DCEBFF, #EEF5FF); }
-.project-shot.demo-food { background: linear-gradient(135deg, #FFEDD5, #FFF7ED); }
-.project-shot.demo-watch { background: linear-gradient(135deg, #E2E8F0, #F8FAFC); }
-.project-shot.demo-services { background: linear-gradient(135deg, #CCF3FE, #F0FBFF); }
-.b-bar { display: flex; gap: 5px; padding: 8px 10px; background: #fff; border-radius: 10px 10px 0 0; border-bottom: 1px solid var(--border); }
-.b-bar i { width: 8px; height: 8px; border-radius: 50%; background: #CBD5E1; }
-.b-body { flex: 1; background: #fff; padding: 12px; display: flex; flex-direction: column; gap: 10px; overflow: hidden; }
-.d-hero { height: 44%; border-radius: 8px; background: linear-gradient(135deg, #FDBA74, #FB923C); }
-.d-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; flex: 1; }
-.d-row span { border-radius: 6px; background: #FFEDD5; }
-.d-btn { height: 14px; width: 40%; border-radius: 999px; background: var(--wa); align-self: center; }
-.d-chips { display: flex; gap: 6px; }
-.d-chips span { height: 12px; width: 18%; border-radius: 999px; background: #E2E8F0; }
-.d-chips .on { background: var(--navy); }
-.d-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; flex: 1; }
-.d-grid span { border-radius: 6px; background: linear-gradient(180deg, #E2E8F0 70%, #F1F5F9 70%); }
-.d-split { display: grid; grid-template-columns: 1.2fr 1fr; gap: 10px; flex: 1; }
-.d-split > div:first-child { display: flex; flex-direction: column; gap: 6px; justify-content: center; }
-.d-split span { height: 7px; border-radius: 4px; background: #E2E8F0; }
-.d-split .t { height: 12px; width: 85%; background: var(--navy); }
-.d-split .cta { height: 14px; width: 55%; border-radius: 999px; background: var(--cyan); margin-top: 4px; }
-.d-split .img { border-radius: 8px; background: linear-gradient(135deg, #99E6FD, #4FD6FC); }
-.d-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; height: 24%; }
-.d-steps span { border-radius: 6px; background: #F0FBFF; border: 1px solid #CCF3FE; }
+.case-body { padding: 0 8px 8px; }
+.case-body h3 { font-size: 1.35rem; font-weight: 800; }
+.case-category { color: var(--text-2); font-size: .95rem; margin-top: 2px; }
+.case-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 18px; }
+.case-tags li {
+  font-size: .8rem; font-weight: 600; color: var(--blue-dark); line-height: 1.3;
+  padding: 4px 10px; border-radius: 999px; background: var(--blue-soft); border: 1px solid #CFE0FF;
+}
+.case-details { margin: 0; display: grid; gap: 4px; }
+.case-details dt { font-size: .75rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--cyan-text); margin-top: 8px; }
+.case-details dt:first-child { margin-top: 0; }
+.case-details dd { margin: 0; color: var(--text-2); font-size: .96rem; }
+
+/* Escritorio: video grande a la izquierda y texto a la derecha, un proyecto por fila */
+@media (min-width: 960px) {
+  .cases { gap: 32px; }
+  .case { grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); align-items: center; gap: 36px; padding: 18px; }
+  .case-body { padding: 8px 16px 8px 0; }
+}
 
 /* ---------- Planes ---------- */
 .plans { display: grid; gap: 22px; align-items: stretch; }
