@@ -8,14 +8,15 @@
   var wa = cfg.whatsapp || {};
   var waNumber = wa.number ? String(wa.number).replace(/\D/g, "") : "";
 
-  function waLink(plan) {
-    var msg = plan && wa.planMessage ? wa.planMessage.replace("{plan}", plan) : wa.defaultMessage || "";
+  function waLink(plan, msgKey) {
+    var msg = plan && wa.planMessage ? wa.planMessage.replace("{plan}", plan)
+      : (msgKey && wa[msgKey + "Message"]) || wa.defaultMessage || "";
     return "https://wa.me/" + waNumber + (msg ? "?text=" + encodeURIComponent(msg) : "");
   }
 
   $$("[data-wa]").forEach(function (el) {
     if (waNumber) {
-      el.href = waLink(el.getAttribute("data-plan"));
+      el.href = waLink(el.getAttribute("data-plan"), el.getAttribute("data-msg"));
       el.target = "_blank";
       el.rel = "noopener";
       el.hidden = false;

@@ -15,7 +15,10 @@ window.SITE_CONFIG = {
     // Confirmado. null = botones de WhatsApp desactivados.
     number: "51929523437",
     defaultMessage:
-      "Hola, Rediseñalo Pe. Estoy interesado en una página web o catálogo digital para mi negocio. Quisiera conocer los planes y solicitar una cotización.",
+      "Hola, Rediseñalo Pe. Quisiera información para mejorar la presencia digital de mi negocio.",
+    // Botón "Solicitar diagnóstico gratuito" (data-msg="diagnostic").
+    diagnosticMessage:
+      "Hola, Rediseñalo Pe. Quisiera solicitar un diagnóstico gratuito de la presencia digital de mi negocio.",
     // {plan} se reemplaza por el nombre del plan.
     planMessage:
       "Hola, Rediseñalo Pe. Estoy interesado en el plan {plan} para mi negocio. Quisiera conocer los detalles y solicitar una cotización."
