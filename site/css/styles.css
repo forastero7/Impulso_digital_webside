@@ -307,7 +307,8 @@ body.menu-open { overflow: hidden; }
 .cards-4 { display: grid; gap: 18px; }
 @media (min-width: 640px) { .cards-4 { grid-template-columns: 1fr 1fr; } }
 @media (min-width: 1040px) { .cards-4 { grid-template-columns: repeat(4, 1fr); } }
-.service { padding: 26px; }
+.service { padding: 22px; }
+@media (min-width: 640px) { .service { padding: 26px; } }
 .service:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
 .service h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
 .service p { color: var(--text-2); font-size: .97rem; }
@@ -330,7 +331,10 @@ body.menu-open { overflow: hidden; }
 .check-list .icon { color: var(--cyan-text); margin-top: .25em; }
 .check-list li.muted { color: var(--text-2); }
 .check-list li.muted .icon { color: #94A3B8; }
-@media (min-width: 720px) { .check-list.cols-2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 32px; } }
+.includes-grid { display: grid; gap: 0 16px; }
+@media (min-width: 560px) { .includes-grid { grid-template-columns: 1fr 1fr; } }
+.includes-grid li { font-size: .95rem; line-height: 1.4; }
+@media (min-width: 900px) { .includes-grid { grid-template-columns: repeat(3, 1fr); column-gap: 32px; } }
 
 .extras {
   margin-top: 18px; padding: 28px; border-radius: var(--radius); border: 1px dashed #CBD5E1;
@@ -466,6 +470,10 @@ body.menu-open { overflow: hidden; }
 .social a:hover { background: rgba(255, 255, 255, .28); }
 .social svg { width: 20px; height: 20px; }
 @media (min-width: 560px) { .contact-actions .btn { width: auto; } }
+@media (max-width: 419px) {
+  .contact-box { padding: 34px 18px; }
+  .contact-actions .btn { font-size: .95rem; padding-left: 1em; padding-right: 1em; }
+}
 @media (min-width: 900px) {
   .contact-box { grid-template-columns: 1.4fr 1fr; align-items: center; padding: 56px; }
 }
