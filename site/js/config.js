@@ -19,9 +19,9 @@ window.SITE_CONFIG = {
     // Botón "Solicitar diagnóstico gratuito" (data-msg="diagnostic").
     diagnosticMessage:
       "Hola, Rediseñalo Pe. Quisiera solicitar un diagnóstico gratuito de la presencia digital de mi negocio.",
-    // {plan} se reemplaza por el nombre del plan.
+    // {plan} se reemplaza por data-plan del botón (ej. "Negocio desde S/1,000").
     planMessage:
-      "Hola, Rediseñalo Pe. Estoy interesado en el plan {plan} para mi negocio. Quisiera conocer los detalles y solicitar una cotización."
+      "Hola Rediseñalo Pe, estoy interesado(a) en el Plan {plan}. Quisiera recibir más información."
   },
 
   // PENDIENTE: confirmar horario definitivo (ej. "Lunes a sábado, de 8:00 a. m. a 6:30 p. m."). null = no se muestra.
@@ -58,8 +58,8 @@ window.SITE_CONFIG = {
   // Contenido en borrador: true = se muestra en la web.
   show: {
     processTimes: false,  // plazos orientativos del proceso de trabajo
-    planTraining: false,  // capacitación presencial en planes Intermedio y Avanzado
-    paymentTerms: false   // condición de pago 50% / 50%
+    planTraining: true,   // capacitación de entrega en planes Negocio y Pro
+    paymentTerms: true    // condición de pago 50% / 50%
   },
 
   // Analítica: NO instalada. Se activará solo tras definir qué medir y revisar
