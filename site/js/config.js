@@ -1,5 +1,5 @@
 /*
- * CONFIGURACIÓN DEL SITIO — rediseñalo.pe
+ * CONFIGURACIÓN DEL SITIO — Rediseñalo Pe
  * ------------------------------------------------------------------
  * Aquí se centralizan los datos pendientes de confirmar.
  * Regla general: si un dato es `null` o `false`, NO se muestra en la web.
@@ -7,7 +7,7 @@
  */
 window.SITE_CONFIG = {
   brand: {
-    name: "rediseñalo.pe"
+    name: "Rediseñalo Pe"
   },
 
   whatsapp: {
@@ -15,10 +15,10 @@ window.SITE_CONFIG = {
     // Confirmado. null = botones de WhatsApp desactivados.
     number: "51929523437",
     defaultMessage:
-      "Hola, rediseñalo.pe. Estoy interesado en una página web o catálogo digital para mi negocio. Quisiera conocer los planes y solicitar una cotización.",
+      "Hola, Rediseñalo Pe. Estoy interesado en una página web o catálogo digital para mi negocio. Quisiera conocer los planes y solicitar una cotización.",
     // {plan} se reemplaza por el nombre del plan.
     planMessage:
-      "Hola, rediseñalo.pe. Estoy interesado en el plan {plan} para mi negocio. Quisiera conocer los detalles y solicitar una cotización."
+      "Hola, Rediseñalo Pe. Estoy interesado en el plan {plan} para mi negocio. Quisiera conocer los detalles y solicitar una cotización."
   },
 
   // PENDIENTE: confirmar horario definitivo (ej. "Lunes a sábado, de 8:00 a. m. a 6:30 p. m."). null = no se muestra.

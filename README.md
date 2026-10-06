@@ -1,6 +1,6 @@
-# rediseñalo.pe — sitio web
+# Rediseñalo Pe — sitio web
 
-Web de una sola página de **rediseñalo.pe**: diseño de páginas web y catálogos digitales
+Web de una sola página de **Rediseñalo Pe**: diseño de páginas web y catálogos digitales
 con cotización por WhatsApp para negocios en Perú.
 
 > **Estado: versión de revisión.** El contenido está en borrador y la web no debe
