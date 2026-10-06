@@ -1,6 +1,6 @@
-# Impulso Digital — sitio web
+# rediseñalo.pe — sitio web
 
-Web de una sola página de **Impulso Digital**: diseño de páginas web y catálogos digitales
+Web de una sola página de **rediseñalo.pe**: diseño de páginas web y catálogos digitales
 con cotización por WhatsApp para negocios en Perú.
 
 > **Estado: versión de revisión.** El contenido está en borrador y la web no debe
@@ -15,7 +15,7 @@ site/                 ← carpeta que se publica en Netlify
 ├── js/config.js      ← DATOS PENDIENTES: WhatsApp, horario, redes, etc.
 ├── js/main.js        ← comportamiento (menú, WhatsApp, animaciones)
 ├── fonts/            ← Manrope e Inter alojadas localmente (sin servicios externos)
-└── img/              ← favicon y, más adelante, logo y capturas
+└── img/              ← logo optimizado (WebP), favicon y, más adelante, capturas
 docs/                 ← notas internas (no se publican)
 netlify.toml          ← configuración de Netlify
 ```
@@ -33,7 +33,6 @@ Regla: si un dato es `null` o `false`, **no se muestra** en la web.
 | `schedule` | Pendiente de confirmar | No se muestra horario |
 | `email`, `social` | Pendientes | No se muestran correo ni iconos de redes |
 | `legal.ruc`, `legal.businessName` | Pendientes | No se muestran |
-| `brand.logo` | Pendiente (archivo) | Logo tipográfico provisional |
 | `portfolio` | Pendiente de autorización | Solo se ven proyectos demostrativos (ver `docs/portafolio-pendiente.md`) |
 | `show.processTimes` | Pendiente | Plazos del proceso ocultos |
 | `show.planTraining` | Pendiente | Capacitación presencial oculta en los planes |

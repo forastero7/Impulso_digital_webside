@@ -90,18 +90,6 @@
     el.hidden = !show[el.getAttribute("data-show")];
   });
 
-  /* ---------- Logo definitivo ---------- */
-  if (cfg.brand && cfg.brand.logo) {
-    $$("[data-brand]").forEach(function (el) {
-      el.innerHTML = "";
-      var img = document.createElement("img");
-      img.src = cfg.brand.logo;
-      img.alt = cfg.brand.name || "Impulso Digital";
-      img.className = "brand-logo";
-      el.appendChild(img);
-    });
-  }
-
   /* ---------- Portafolio: proyectos reales autorizados ---------- */
   var grid = document.querySelector("[data-portfolio]");
   (cfg.portfolio || []).slice().reverse().forEach(function (p) {
