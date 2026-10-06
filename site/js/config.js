@@ -12,8 +12,8 @@ window.SITE_CONFIG = {
 
   whatsapp: {
     // Número en formato internacional, solo dígitos (ej. "51999999999").
-    // PENDIENTE: confirmar el número real. null = botones de WhatsApp desactivados.
-    number: null,
+    // Confirmado. null = botones de WhatsApp desactivados.
+    number: "51929523437",
     defaultMessage:
       "Hola, rediseñalo.pe. Estoy interesado en una página web o catálogo digital para mi negocio. Quisiera conocer los planes y solicitar una cotización.",
     // {plan} se reemplaza por el nombre del plan.

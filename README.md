@@ -29,7 +29,7 @@ Regla: si un dato es `null` o `false`, **no se muestra** en la web.
 
 | Dato | Estado | Efecto actual |
 |---|---|---|
-| `whatsapp.number` | Pendiente de confirmar | Botones muestran "WhatsApp disponible pronto"; botón flotante oculto |
+| `whatsapp.number` | Confirmado: +51 929 523 437 | Botones y botón flotante activos |
 | `schedule` | Pendiente de confirmar | No se muestra horario |
 | `email`, `social` | Pendientes | No se muestran correo ni iconos de redes |
 | `legal.ruc`, `legal.businessName` | Pendientes | No se muestran |
