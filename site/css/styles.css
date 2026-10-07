@@ -80,11 +80,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 .skip-link:focus { top: 12px; }
 
-.review-banner {
-  background: var(--ink); color: #E2E8F0;
-  font-size: .8125rem; text-align: center; padding: 6px var(--gutter);
-}
-
 .icon { width: 1.15em; height: 1.15em; flex-shrink: 0; }
 
 /* ---------- Botones ---------- */

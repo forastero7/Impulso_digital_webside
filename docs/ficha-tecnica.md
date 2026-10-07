@@ -18,7 +18,7 @@
 | Hosting actual | GitHub Pages, publicación desde la rama |
 | URL pública | https://forastero7.github.io/Impulso_digital_webside/site/ |
 | Canal de conversión | WhatsApp (`wa.me`), número +51 929 523 437 |
-| Estado | Versión de revisión con `noindex` (lista para lanzar al retirar `noindex` y el aviso de revisión) |
+| Estado | **Lanzada** (indexable) desde el 7 de octubre de 2026 |
 
 ---
 
@@ -72,7 +72,6 @@
 
 | # | Sección | `id` | Contenido principal |
 |---|---|---|---|
-| — | Aviso de revisión | — | Barra superior "Versión de revisión" (se retira al lanzar) |
 | — | Encabezado | `top` | Logo, menú (6 anclas), botón "Consultar" |
 | 1 | Hero | `inicio` | H1, subtítulo, CTA diagnóstico + "Ver nuestros servicios", etiquetas de servicios, maqueta de celular (decorativa) |
 | 2 | Posicionamiento | — | Mensaje "Tu negocio puede ser excelente…" + "Lo que podemos rediseñar contigo" |
@@ -193,7 +192,7 @@ Total: 11 enlaces, todos verificados.
 | JSON-LD | `ProfessionalService`: nombre, URL, logo, descripción, país (Perú), contacto (+51929523437), servicios (`knowsAbout`). Sin dirección, horario, RUC ni valoraciones |
 | robots.txt | `Allow: /` + sitemap (efectivo solo con dominio propio) |
 | sitemap.xml | 1 URL |
-| Indexación | **Bloqueada a propósito** (`<meta name="robots" content="noindex, nofollow">`) hasta el lanzamiento |
+| Indexación | ✅ Permitida (sin `noindex`). Solo la redirección de la raíz mantiene `noindex, follow` |
 | Redirección raíz | `noindex, follow` + canonical a `/site/` |
 
 ---
@@ -208,7 +207,7 @@ Total: 11 enlaces, todos verificados.
 - Contraste revisado (AA): azul `#006BFD` 4.64:1 sobre blanco; cian solo decorativo o sobre fondo oscuro; verde de la maqueta `#0E7A55` 5.3:1.
 - Videos con `aria-label` y control de pausa.
 - `prefers-reduced-motion` respetado (animaciones, scroll suave y videos).
-- Auditoría axe-core: sin violaciones salvo el aviso de revisión fuera de landmark (se retira al lanzar).
+- Auditoría axe-core: sin violaciones.
 
 ---
 
@@ -243,7 +242,7 @@ Verificado sin overflow horizontal, textos cortados ni botones fuera de pantalla
 
 - **Activo:** GitHub Pages "Deploy from a branch" (raíz). La raíz redirige a `site/`.
 - **`.github/workflows/pages.yml`:** solo `workflow_dispatch` (manual). Antes se ejecutaba en cada push y competía con la publicación desde la rama.
-- **Alternativa:** `netlify.toml` publica `site/` (incluye `X-Robots-Tag: noindex` para revisión).
+- **Alternativa:** `netlify.toml` publica `site/` (sin bloqueo de indexación).
 
 ---
 
@@ -260,9 +259,7 @@ Verificado sin overflow horizontal, textos cortados ni botones fuera de pantalla
 
 ## 15. Pendientes y próximos pasos
 
-**Para lanzar (decisión del propietario):**
-1. Quitar `<meta name="robots" content="noindex, nofollow">` de `site/index.html`.
-2. Quitar `<div class="review-banner">` de `site/index.html`.
+**Lanzamiento:** ✅ realizado (se retiraron `noindex` y el aviso de revisión).
 
 **Datos pendientes:** horario de atención, correo, enlaces de redes sociales, RUC/razón social (opcional), imagen 1200×630 para compartir (opcional).
 
@@ -273,7 +270,7 @@ Verificado sin overflow horizontal, textos cortados ni botones fuera de pantalla
 - "Hasta 5 páginas" (Pro) vs. "Hasta 7 secciones" (Negocio) usan unidades distintas.
 - Hay 5 botones de diagnóstico; el de la franja del ecosistema es el más prescindible.
 
-**Estado: LISTA CON PENDIENTES MENORES.**
+**Estado: LANZADA — con pendientes menores no bloqueantes** (datos de contacto, imagen para compartir 1200×630, dominio propio).
 
 ---
 

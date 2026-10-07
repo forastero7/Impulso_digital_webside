@@ -50,11 +50,11 @@ La raíz (`index.html`) redirige a `site/`, por lo que la dirección pública es
 El flujo `.github/workflows/pages.yml` queda solo para ejecución manual (antes competía con
 la publicación desde la rama en cada push).
 
-## Lanzamiento (permitir indexación)
+## Lanzamiento (permitir indexación) — ✅ realizado el 7 de octubre de 2026
 
-- [ ] Quitar `<meta name="robots" content="noindex, nofollow">` de `site/index.html`.
-- [ ] Quitar el aviso "Versión de revisión" (`<div class="review-banner">`) de `site/index.html`.
-- [ ] (Si se usa Netlify) quitar la cabecera `X-Robots-Tag` de `netlify.toml`.
+- [x] Quitar `<meta name="robots" content="noindex, nofollow">` de `site/index.html`.
+- [x] Quitar el aviso "Versión de revisión" (`<div class="review-banner">`) de `site/index.html`.
+- [x] (Si se usa Netlify) quitar la cabecera `X-Robots-Tag` de `netlify.toml`.
 
 ## Al conectar el dominio propio
 

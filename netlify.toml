@@ -1,12 +1,9 @@
 [build]
   publish = "site"
 
-# Versión de revisión: evita que buscadores indexen la URL de Netlify.
-# Quitar este bloque (y la etiqueta meta robots de site/index.html) al aprobar la web.
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Robots-Tag = "noindex, nofollow"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
